@@ -3,6 +3,8 @@ name: Docker Image CI
 on:
   push:
     branches: [ "main" ]
+  schedule:
+    - cron: '0 0 * * 0'  # 每周日午夜（UTC 时间）运行一次
 
 jobs:
 
@@ -26,7 +28,7 @@ jobs:
     - name: Determine Image Tags
       id: tags
       run: |
-        echo "tags=${{ secrets.DOCKERHUB_USERNAME }}/adapter-bottom:latest,${{ secrets.DOCKERHUB_USERNAME }}/adapter-bottom:latest" >> $GITHUB_OUTPUT
+        echo "tags=${{ secrets.DOCKERHUB_USERNAME }}/adapter-bottom:latest,${{ secrets.DOCKERHUB_USERNAME }}/adapter-bottom:$(date +%Y%m%d)" >> $GITHUB_OUTPUT
 
     - name: Build and Push Docker Image
       uses: docker/build-push-action@v5
