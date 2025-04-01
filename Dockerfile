@@ -3,6 +3,7 @@ LABEL authors="infinitycat233"
 
 WORKDIR /adapters
 
+RUN pip install --upgrade pip
 RUN pip install nonebot-adapter-onebot nonebot2[fastapi] nonebot2[websockets]
 
 COPY . .
