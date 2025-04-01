@@ -1,5 +1,6 @@
-# test
+# maimbot-adapter-bottom
 
+Underlying image of maimbot-adapter
 ## How to start
 
 1. generate project using `nb create` .
