@@ -28,10 +28,7 @@ jobs:
     - name: Determine Image Tags
       id: tags
       run: |
-        if [[ "${{ github.ref }}" == refs/tags/* ]]; then
-          echo "tags=${{ secrets.DOCKERHUB_USERNAME }}/adapter-bottom:${{ github.ref_name }},${{ secrets.DOCKERHUB_USERNAME }}/adapter-bottom:latest" >> $GITHUB_OUTPUT
-        elif [ "${{ github.ref }}" == "refs/heads/main" ]; then
-          echo "tags=${{ secrets.DOCKERHUB_USERNAME }}/adapter-bottom:main,${{ secrets.DOCKERHUB_USERNAME }}/adapter-bottom:latest" >> $GITHUB_OUTPUT
+        echo "tags=${{ secrets.DOCKERHUB_USERNAME }}/adapter-bottom:latest,${{ secrets.DOCKERHUB_USERNAME }}/adapter-bottom:latest" >> $GITHUB_OUTPUT
 
     - name: Build and Push Docker Image
       uses: docker/build-push-action@v5
